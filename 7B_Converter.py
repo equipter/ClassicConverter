@@ -2,6 +2,7 @@ import argparse
 import os
 import pathlib
 from typing import Tuple
+import time
 # mifare classic 7b uid binary to flipper .nfc converter. 
 # Created by Equipter with code portions borrowed from Lucaslhm/AmiiboFlipperConverter
 # V1.02
@@ -127,4 +128,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print("Converting...")
+    time.sleep(0.3)
     print("Completed Conversion")
