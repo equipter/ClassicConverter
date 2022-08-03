@@ -1,7 +1,7 @@
 # ClassicConverter
 Classic Converter is a python script that converts Mifare Classic binary files into [FlipperZero's](https://flipperzero.one/) custom .nfc format. 
 
-**Works for 4-Byte UIDs and 7-Byte UIDs just make sure youre using the correct script when converting :) **
+**Works for 4-Byte UIDs and 7-Byte UIDs just make sure youre using the correct script when converting :)**
   
 
 ## Acknowledgements
@@ -25,6 +25,7 @@ The Parameters for ClassicConverter are as such
 
 ### Example
 in this example ill be using the 4B uid credential converter. use whats right for your card though. 
+
 `python3 4B_Converter.py -i assets/example.bin`
 after running you should be met with "Completed Conversion" and a new file appearing in your assets folder with the same name as your binary file but with a .nfc extension and file format. 
 
