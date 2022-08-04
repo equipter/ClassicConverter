@@ -3,9 +3,9 @@ import os
 import pathlib
 from typing import Tuple
 import time
-# mifare classic 7b uid binary to flipper .nfc converter. 
+# mifare classic 4b uid binary to flipper .nfc converter. 
 # Created by Equipter with code portions borrowed from Lucaslhm/AmiiboFlipperConverter
-# V1.02
+# V1.05
 
 
 def write_output(name: str, assemble: str, out_dir: str):
@@ -16,6 +16,7 @@ def write_output(name: str, assemble: str, out_dir: str):
 def convert(contents: bytes) -> Tuple[str, int]:
     buffer = []
     Block_count = 0
+    Mf_size = 0
 
     Block = []
     for i in range(len(contents) - 0):
@@ -26,7 +27,14 @@ def convert(contents: bytes) -> Tuple[str, int]:
             buffer.append(f"Block {Block_count}: {' '.join(Block).upper()}")
             Block = []
             Block_count += 1
-    return "\n".join(buffer), Block_count
+
+        if Block_count == 64:
+            Mf_size = 1
+        elif Block_count == 128:
+            Mf_size = 2
+        elif Block_count == 256:
+            Mf_size = 4
+    return "\n".join(buffer), Block_count, Mf_size
 
 
 def get_uid(contents: bytes) -> str:
@@ -39,21 +47,21 @@ def get_uid(contents: bytes) -> str:
 
 def get_sak(contents: bytes) -> str:
     Block = []
-    for i in range (8,9):
+    for i in range (7,8):
         sak = contents[i : i + 1].hex()
         Block.append(sak)
     return " ".join(Block).upper()
 
 def get_atqa(contents: bytes) -> str:
     Block = []
-    for i in range (9,10):
+    for i in range (8,10):
         atqa = contents[i : i + 1].hex()
         Block.append(atqa)
     return " ".join(Block).upper()
 
 
 def assemble_code(contents: {hex}) -> str:
-    conversion, Block_count = convert(contents)
+    conversion, Block_count, Mf_size = convert(contents)
 
     return f"""Filetype: Flipper NFC device
 Version: 2
@@ -64,7 +72,7 @@ UID: {get_uid(contents)}
 ATQA: {get_atqa(contents)}
 SAK: {get_sak(contents)}
 # Mifare Classic specific data
-Mifare Classic type: 1K
+Mifare Classic type: {Mf_size}K
 Data format version: 2
 # Mifare Classic Blocks, '??' means unknown data
 {conversion}

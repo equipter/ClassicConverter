@@ -16,6 +16,7 @@ def write_output(name: str, assemble: str, out_dir: str):
 def convert(contents: bytes) -> Tuple[str, int]:
     buffer = []
     Block_count = 0
+    Mf_size = 0
 
     Block = []
     for i in range(len(contents) - 0):
@@ -26,7 +27,14 @@ def convert(contents: bytes) -> Tuple[str, int]:
             buffer.append(f"Block {Block_count}: {' '.join(Block).upper()}")
             Block = []
             Block_count += 1
-    return "\n".join(buffer), Block_count
+
+        if Block_count == 64:
+            Mf_size = 1
+        elif Block_count == 128:
+            Mf_size == 2
+        elif Block_count == 256:
+            Mf_size = 4
+    return "\n".join(buffer), Block_count, Mf_size
 
 
 def get_uid(contents: bytes) -> str:
@@ -53,7 +61,7 @@ def get_atqa(contents: bytes) -> str:
 
 
 def assemble_code(contents: {hex}) -> str:
-    conversion, Block_count = convert(contents)
+    conversion, Block_count, Mf_size = convert(contents)
 
     return f"""Filetype: Flipper NFC device
 Version: 2
@@ -64,7 +72,7 @@ UID: {get_uid(contents)}
 ATQA: {get_atqa(contents)}
 SAK: {get_sak(contents)}
 # Mifare Classic specific data
-Mifare Classic type: 1K
+Mifare Classic type: {Mf_size}K
 Data format version: 2
 # Mifare Classic Blocks, '??' means unknown data
 {conversion}
