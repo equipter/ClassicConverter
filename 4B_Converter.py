@@ -5,7 +5,7 @@ from typing import Tuple
 import time
 # mifare classic 4b uid binary to flipper .nfc converter. 
 # Created by Equipter with code portions borrowed from Lucaslhm/AmiiboFlipperConverter
-# V1.05
+# V1.06
 
 
 def write_output(name: str, assemble: str, out_dir: str):
