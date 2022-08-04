@@ -1,6 +1,12 @@
 # ClassicConverter
 Classic Converter is a python script that converts Mifare Classic binary files into [FlipperZero's](https://flipperzero.one/) custom .nfc format. 
 
+Worth noting, ClassicConverter also handles all of the below for the file header:
+- UID
+- SAK
+- ATQA
+- Storage Size 
+
 **Works for 4-Byte UIDs and 7-Byte UIDs just make sure youre using the correct script when converting :)**
   
 
