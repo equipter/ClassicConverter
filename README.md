@@ -22,6 +22,8 @@ Worth noting, ClassicConverter also handles all of the below for the file header
 1. Download code Either through `git clone` or by simply pressing the green [Code] Button at the top and downloading the zip. 
 2. Place your (.bin) Binary files in the "assets" folder or create your own folder(s) and place the files in there. 
 3. pick the right converter for you, 4B_Converter is for 4-byte UID classics, 7B_Converter is for 7-Byte UID Credentials, 7B_DI_Converter is for 7-Byte UID Credentials that require a Key A.
+
+**Note:** 7B_DI_Converter converts from bin to nfc and generates necessary keys for Disney infinity figures 
 ## Syntax 
 The Parameters for ClassicConverter are as such 
 
