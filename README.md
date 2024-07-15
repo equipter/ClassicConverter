@@ -8,11 +8,6 @@ Worth noting, ClassicConverter also handles all of the below for the file header
 - Storage Size 
 
 **Works for 4-Byte UIDs and 7-Byte UIDs just make sure youre using the correct script when converting :)**
-  
-
-## Acknowledgements
-| [Github](https://github.com/equipter) | [Twitter](https://twitter.com/Equip0x80) | [Reddit](https://www.reddit.com/user/equipter) | equip paypal: equipter@outlook.com | [Discord](https://discord.gg/e9XzfG5nV5) |
-| :---: | :---: | :---: | :---: | :---: |
 
  [Lucaslhm's Amiibo converter script for MFUL](https://github.com/Lucaslhm/AmiiboFlipperConverter) for code inspo
 
