@@ -42,5 +42,5 @@ after running you should be met with "Completed Conversion" and a new file appea
 ## Support
 If the SAK in your converted file is wrong it's due to an anti-cloning tactic. read about it here and how to fix it [link](https://gist.github.com/equipter/3022aea4e371e585ff6e46de637e7769)
 
-For support, Message Equip on discord Equip#1515 or join The discord server [Link](https://discord.gg/e9XzfG5nV5)
+For support, Message Equip on discord
 
